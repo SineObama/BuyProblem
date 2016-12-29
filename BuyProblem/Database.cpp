@@ -15,15 +15,8 @@ Database::Database()
 }
 
 Data Database::select(requirement *items, size_t n) {
-
+    Data a;
+    return a;
 }
 
-Database &Database::operator=(const Database &) {}
-
-void Database::calc_o(size_t n, price_t *price, size_t m, require_t *require, data_t **data, times_t *times) {
-
-}
-
-void Database::calc(size_t n, price_t *price, size_t m, require_t *require, data_t **data, times_t *times) {
-
-}
+Database &Database::operator=(const Database &) { return *this; }
