@@ -23,9 +23,8 @@ public:
         data require[r_n] = { 2 };
         data da[p_n][r_n] = { { 1 },{ 2 } };
         data expected[p_n] = { 0, 1 };
-        common<p_n, r_n>(price, require, da, expected);
+        commonTest<p_n, r_n>(price, require, da, expected);
     }
-
     TEST_METHOD(SolutionTest2)
     {
         const size_t p_n = 2;
@@ -35,9 +34,8 @@ public:
         data da[p_n][r_n] = { { 2 },{ 3 } };
         data expected[p_n] = { 2, 0 };
         data result[p_n] = {};
-        common<p_n, r_n>(price, require, da, expected);
+        commonTest<p_n, r_n>(price, require, da, expected);
     }
-
     TEST_METHOD(SolutionTest3)
     {
         const size_t p_n = 3;
@@ -46,9 +44,8 @@ public:
         data require[r_n] = { 6 };
         data da[p_n][r_n] = { { 1 },{ 2 }, {5} };
         data expected[p_n] = { 1, 0, 1 };
-        common<p_n, r_n>(price, require, da, expected);
+        commonTest<p_n, r_n>(price, require, da, expected);
     }
-
     TEST_METHOD(SolutionTest4)
     {
         const size_t p_n = 5;
@@ -57,7 +54,7 @@ public:
         data require[r_n] = { 13 };
         data da[p_n][r_n] = { { 5 },{ 3 },{ 2 },{ 13 },{ 0 } };
         data expected[p_n] = { 0, 3, 2, 0, 0 };
-        common<p_n, r_n>(price, require, da, expected);
+        commonTest<p_n, r_n>(price, require, da, expected);
     }
     TEST_METHOD(SolutionTest4_2)
     {
@@ -67,7 +64,7 @@ public:
         data require[r_n] = { 13 };
         data da[p_n][r_n] = { { 4 },{ 3 },{ 2 } };
         data expected[p_n] = { 1, 3, 0 };
-        common<p_n, r_n>(price, require, da, expected);
+        commonTest<p_n, r_n>(price, require, da, expected);
     }
     TEST_METHOD(SolutionTest4_3)
     {
@@ -77,7 +74,7 @@ public:
         data require[r_n] = { 5 };
         data da[p_n][r_n] = { { 4 },{ 3 },{ 2 } };
         data expected[p_n] = { 0, 1, 1 };
-        common<p_n, r_n>(price, require, da, expected);
+        commonTest<p_n, r_n>(price, require, da, expected);
     }
     TEST_METHOD(SolutionTest4_4)
     {
@@ -87,7 +84,7 @@ public:
         data require[r_n] = { 4 };
         data da[p_n][r_n] = { { 5 },{ 3 },{ 1 } };
         data expected[p_n] = { 0, 1, 1 };
-        common<p_n, r_n>(price, require, da, expected);
+        commonTest<p_n, r_n>(price, require, da, expected);
     }
     TEST_METHOD(SolutionTest5)
     {
@@ -97,13 +94,23 @@ public:
         data require[r_n] = { 5, 5 };
         data da[p_n][r_n] = { { 1, 4 },{ 3, 3 },{ 4, 1 } };
         data expected[p_n] = { 1, 0, 1 };
-        common<p_n, r_n>(price, require, da, expected);
+        commonTest<p_n, r_n>(price, require, da, expected);
+    }
+    TEST_METHOD(SolutionTest6) // 13Í¿±Ú£¬13µÆÁý¹í£¬7ÖãÉñ
+    {
+        const size_t p_n = 4;
+        const size_t r_n = 3;
+        data price[p_n] = { 3, 3, 3,3 };
+        data require[r_n] = { 13, 13, 7 };
+        data da[p_n][r_n] = { { 0, 1, 3 },{ 0,3, 0 },{ 6, 0,0 },{4,0,3} };// 6,9,14,ºÚ
+        data expected[p_n] = { 1, 4, 1, 2 };
+        commonTest<p_n, r_n>(price, require, da, expected);
     }
 
 private:
 
     template<int p_n, int r_n>
-    static void common(data *price, data *require, data da[][r_n], data *expected) {
+    static void commonTest(data *price, data *require, data da[][r_n], data *expected) {
 
         data result[p_n] = {};
 

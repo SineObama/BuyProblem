@@ -1,18 +1,21 @@
 #pragma once
 
-#include "Data.h"
+#include "Form.h"
+#include "Target.h"
 
 class Database
 {
 public:
-    typedef std::pair<std::string, size_t> requirement;
+    typedef Form<Target, std::string, size_t> Form;
 
     static Database &getInstance();
-    Data select(requirement *, size_t n);
+    Form select(size_t n, const std::string *requirements);  // 返回含有需求的套餐的表格
 
 private:
     Database();
     Database(const Database &);
     Database &operator=(const Database &);
+
+    Form *form;
 };
 
